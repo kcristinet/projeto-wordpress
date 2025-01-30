@@ -2,10 +2,10 @@
 
 # Update and install necessary packages
 sudo apt-get update
-sudo apt-get install -y apache2 mysql-server php php-mysql libapache2-mod-php php-cli
+sudo apt-get install -y apache2 php libapache2-mod-php php-cli php-mysql mysql-server
 
 # Download and install WordPress
-wget -c http://wordpress.org/latest.zip
+wget -c https://wordpress.org/latest.tar.gz
 tar -xzvf latest.tar.gz
 sudo mv wordpress/* /var/www/html/
 
@@ -27,3 +27,10 @@ sudo sed -i "s/"NaoSeiaSenha!"/password/" /var/www/html/wp-config.php
 
 # Restart Apache
 sudo systemctl restart apache2
+
+# Check if WordPress is installed
+if curl -s http://localhost | grep -q "WordPress"; then
+  echo "WordPress foi instalado com sucesso!"
+else
+  echo "A instalação do WordPress falhou."
+fi

@@ -1,7 +1,12 @@
+# Configuração do provedor
+
 terraform {
   required_version = ">=0.12"
 
   required_providers {
+    
+    
+
     azapi = {
       source  = "azure/azapi"
       version = "~>1.5"
@@ -19,5 +24,11 @@ terraform {
 
 provider "azurerm" {
   features {}
- 
+
+
+# Autentica o usuario azure
+
+}
+
+provider "azapi" {
 }
